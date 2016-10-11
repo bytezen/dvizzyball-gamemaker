@@ -102,13 +102,13 @@ global.plateState = PLATE.pitch;
 global.drop_targets = noone;  // the current active drop targets depends on turnState
 
 
-global.currentPitch = noone;
-global.pitch_sequence = ds_list_create();
+//global.currentPitch = noone;
+//global.pitch_sequence = ds_list_create();
 
 global.inningNumber = 1;
 
 //Create the deck
-global.deck = scr_create_deck(true);
+global.deck = scr_create_deck();
 
 
 global.gameStatus = ds_map_create();

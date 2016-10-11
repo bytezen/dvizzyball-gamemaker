@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>player = PITCHER;
+            <string>event_inherited();
+
+player = PITCHER;
 
 value = noone;
 prev_value = noone;

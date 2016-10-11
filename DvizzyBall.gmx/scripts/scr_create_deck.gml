@@ -1,10 +1,6 @@
-/*
+///scr_create_deck()
 
-  return a shuffled deck of cards by default
-  
-  argument0 -- shuffleFlag; true by default
-*/
-var shuffle = argument0;
+var shuffle = SHUFFLE_DECK;
 
 
 var i, cards, ret;

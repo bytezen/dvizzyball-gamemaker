@@ -28,6 +28,7 @@
             <string>///create all data stores
 
 instance_create(x,y,obj_deck_store);
+instance_create(x,y,store_atbat);
 </string>
           </argument>
         </arguments>

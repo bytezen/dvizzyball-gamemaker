@@ -5,7 +5,7 @@
 
 
 if( ds_stack_size(global.deck) <= 0 ) {
-    scr_create_deck(argument0);
+    scr_create_deck();
 }
 
 return ds_stack_pop(global.deck); 

@@ -5,6 +5,8 @@
 
 var action = argument0;
 var payload = argument1;
+var store = instance_find(store_atbat,0);
+var deckStore = instance_find(obj_deck_store, 0);
 
 console('...scr_reducer_atbat handling action: ' + action);
 
@@ -15,10 +17,38 @@ switch(action) {
         global.turnState = PITCHER;
         break;
     case ATBAT_ACTION_PITCH:
-        console('... ... action: ' + action);
-        ds_list_add(global.pitch_sequence,value);
+        console('... ... action: ' + action + " payload: " + string(payload));
+
         
-        global.currentPitch = payload;    
+        // update the pitch sequence
+        var oldSequence = store.data[? "pitchSequence"];
+        var newSequence = ds_list_create();
+        
+        ds_list_copy(newSequence, oldSequence);
+        ds_list_destroy(oldSequence);
+        
+        ds_list_add(newSequence, payload);
+        
+        scr_set_store_value(store, "pitchSequence", newSequence);
+        
+        //update the current pitch
+        scr_set_store_value(store, "currentPitch", payload);
+        
+        //update the pitcher's hand
+        var oldhand = deckStore.data[? PITCHER];
+        var newhand = ds_list_create();
+        ds_list_copy(newhand, oldhand);
+        ds_list_destroy(oldhand);
+        
+        for(var i=0; i < ds_list_size(newhand); i++) {
+          if(payload == newhand[| i]) {
+             ds_list_delete(newhand, i);
+             break;
+          }
+        }
+        scr_set_store_value(deckStore,"PITCHER",newhand);
+        
+        //global.currentPitch = payload;    
         //global.turnState = BATTER; //TURN.offense;
         //global.drop_targets = 0 ;
         //global.drop_targets[0] = 

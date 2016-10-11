@@ -12,15 +12,17 @@
 var instance = argument0;
 var card_value;
 
-with( instance ) {
-    card_value = value;
-}
+//with( instance ) {
+//    card_value = value;
+//}
  
 //var value = scr_card_rank(argument0);
-card_value = scr_card_rank(card_value);
+card_value = scr_card_rank(instance.value);
+
+
 
 //Check for a walk
-if( global.pitch_sequence != noone && scr_contains(value, global.pitch_sequence) > -1 ) {
+if( scr_is_walk() ) {
     // we need to handle a walk situation
 } else {
     //scr_reducer_plate(ACTION.pitch, value);

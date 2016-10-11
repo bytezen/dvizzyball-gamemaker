@@ -30,10 +30,10 @@
 value_changed = scr_isChanged(id)
 
 if( value_changed ) {
-    show_debug_message(' got to value changed handler ' + string(prev_value) + " -to- " + string(value) + ' handler ==&gt; ' + string(on_change_handler) );
+    //show_debug_message(' got to value changed handler ' + string(prev_value) + " -to- " + string(value) + ' handler ==&gt; ' + string(on_change_handler) );
     prev_value = value;
     if( on_change_handler != noone ) {
-        show_debug_message('got here ---&gt; calling the handler for the value changed!!');
+        //show_debug_message('got here ---&gt; calling the handler for the value changed!!');
         script_execute(on_change_handler, id);
     }
 }

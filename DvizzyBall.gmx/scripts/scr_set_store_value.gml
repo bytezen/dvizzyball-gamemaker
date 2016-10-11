@@ -7,6 +7,16 @@ var oldval = noone;
 
 // for now only supports lists, strings and numbers and booleans
 
+/*
+console("Checking newval data type: " );
+newval = 1;
+console("     islist =" + string(ds_exists(newval, ds_type_list)));
+*/
+
+/*
+weird real numbers will cause type_map and type_list to return true
+*/
+/*
 if( ds_exists(newval, ds_type_grid) ||
    ds_exists(newval, ds_type_map) ||
    ds_exists(newval, ds_type_priority) ||
@@ -16,31 +26,38 @@ if( ds_exists(newval, ds_type_grid) ||
    show_error(" unsupported data structure type: " + string(newval), false);
    return noone;
 }
+*/
 
 //get the data map from the store objevt 
 var update = false;
-           
+
+console(" { set_store_value } for key: " );
+
 if( ds_map_exists(store.data, key) ) {
-    console(" { set_store_value } for key: " + string(key));
+    console("         --> " + string(key));
     oldval = ds_map_find_value(store.data,key);
     
-    console("{oldValue } = " + scr_list_to_string(oldval) );
-    console("{newValue } = " + scr_list_to_string(newval));
-    
-    //compare lists
-    if(ds_exists(oldval,ds_type_list) ) {
-       console("  running logic to compare old value and new value...");
-       update = !scr_lists_equal(oldval, newval);
-    } else {
-      update = !(oldval == newval );
+    /*
+    if ds_exists(oldval, ds_type_list) {
+       console("         {oldValue } = " + scr_list_to_string(oldval) );
+       console("         {newValue } = " + scr_list_to_string(newval));
     }
+    */
     
-    //console(" { set_store_value }  update = " + string(update));
     
-    if( update ) {
-        show_debug_message("need to update value in store from: " + scr_list_to_string(oldval) + " - to - " + scr_list_to_string(newval));      
+    if (is_int32(newval) || 
+       is_int64(newval) ||
+       is_real(newval)  || 
+       is_bool(newval)  || 
+       is_string(newval)) {
+      update = !(oldval == newval );
+    } else if(ds_exists(oldval,ds_type_list) ) {
+       update = !scr_lists_equal(oldval, newval);
+    } 
+        
+    if( update ) {       
         store.data[? key] =  newval;
-        console(" dataStore listeners length = " + string( ds_list_size(store.listeners) ) );
+        
         with( store ) {
               for(var i=0; i < ds_list_size(listeners); i++) {
                   //with( listeners[| i]) {

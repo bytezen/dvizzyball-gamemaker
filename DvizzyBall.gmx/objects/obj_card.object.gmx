@@ -135,7 +135,7 @@ if( image_index != value )
                 image_index = value;
             }
             //Make the global.card image index invisible
-            value = 53;
+            value = 0; //53;
             x = startx;
             y = starty;
             depth = -1;

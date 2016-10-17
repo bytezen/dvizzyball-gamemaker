@@ -1,40 +1,36 @@
-///scr_deal_to_player(action,player)
+///scr_deal_to_player(current_hand_list, player)
 
-var action = argument0;
+//return the needed cards
+
+var cardList = argument0;
 var player = argument1;
 
-var map = global.decks;
-var cards, i;
-i = 0;
+var i, deckSize, newHand;
+
+
 cards = noone;
+newHand = ds_list_create();
+ds_list_copy(newHand, cardList);
 
-if( ds_map_exists( global.decks, player ) ) {
-    cards = global.decks[? player];
-    repeat( ds_list_size( cards ) ) {
-
-        if( cards[| i] == FACE_DOWN || cards[| i] == HIDDEN_CARD ) {
-            cards[| i] = scr_deal_card(true);
-            i++;
-        }        
-    }
-}
-
-/*
 switch( player ) {
     case PITCHER:
-        cards = map[? PITCHER];
+        deckSize = PITCHER_DECK_SIZE;
         break;
     case FIELDER:
-        cards = map[? FIELDER];    
+        deckSize = FIELDER_DECK_SIZE;
         break;
     case BATTER:
+        deckSize = BATTER_DECK_SIZE;
         break;
-
+    default:
+        show_error("***unknown player. cannot create deck***",true);
 }
 
-if( cards != noone) {
-    repeat( ds_list_size( cards ) ) {
 
-    }         
-}
-*/
+for( i = ds_list_size(cardList); i < deckSize; i++) {
+    newHand[| i] = scr_deal_card(true);     
+    console("     new hand: " + string(newHand[|      i]));                    
+}            
+
+return newHand;
+

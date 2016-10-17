@@ -11,12 +11,23 @@ var deckStore = instance_find(obj_deck_store, 0);
 console('...scr_reducer_atbat handling action: ' + action);
 
 switch(action) {
+    case ATBAT_ACTION_CARD_DROPPED:
+        store.data[? "currentSelectedCard"] = noone;
+         break;
+    case ATBAT_ACTION_SELECT_CARD:
+         store.data[? "currentSelectedCard"] = id;
+         break;
     case INNING_ACTION_PLAY_BALL:
-        global.drop_targets = 0;
-        global.drop_targets[0] = instance_find(obj_pitch_deck,0);
-        global.turnState = PITCHER;
+        //global.drop_targets = 0;
+        //global.drop_targets[0] = instance_find(obj_pitch_deck,0);
+        
+        ds_list_clear(store.data[? "validDropObjects"]);
+        ds_list_add(store.data[? "validDropObjects"], instance_find(obj_pitch_deck,0));
+        store.data[? "playerTurn"] = PITCHER;
+        //global.turnState = PITCHER;
         break;
     case ATBAT_ACTION_PITCH:
+        // expected payload: integer
         console('... ... action: ' + action + " payload: " + string(payload));
 
         
@@ -25,12 +36,11 @@ switch(action) {
         var newSequence = ds_list_create();
         
         ds_list_copy(newSequence, oldSequence);
-        ds_list_destroy(oldSequence);
         
         ds_list_add(newSequence, payload);
         
         scr_set_store_value(store, "pitchSequence", newSequence);
-        
+                        
         //update the current pitch
         scr_set_store_value(store, "currentPitch", payload);
         
@@ -38,7 +48,7 @@ switch(action) {
         var oldhand = deckStore.data[? PITCHER];
         var newhand = ds_list_create();
         ds_list_copy(newhand, oldhand);
-        ds_list_destroy(oldhand);
+
         
         for(var i=0; i < ds_list_size(newhand); i++) {
           if(payload == newhand[| i]) {
@@ -48,6 +58,11 @@ switch(action) {
         }
         scr_set_store_value(deckStore,"PITCHER",newhand);
         
+        
+        //cleanup old lists
+        ds_list_destroy(oldSequence);
+        ds_list_destroy(oldhand);
+                
         //global.currentPitch = payload;    
         //global.turnState = BATTER; //TURN.offense;
         //global.drop_targets = 0 ;

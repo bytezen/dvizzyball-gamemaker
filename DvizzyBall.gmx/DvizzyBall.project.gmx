@@ -21,11 +21,18 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
+    <scripts name="VIEWS">
+      <scripts name="CARD">
+        <script>scripts\scr_on_pitcher_hand_change.gml</script>
+      </scripts>
+    </scripts>
     <scripts name="STORES">
       <script>scripts\scr_set_store_value.gml</script>
       <script>scripts\scr_add_store_listener.gml</script>
+      <script>scripts\scrInitStore.gml</script>
+      <script>scripts\scr_register_action.gml</script>
     </scripts>
-    <scripts name="actions">
+    <scripts name="ACTIONS">
       <script>scripts\scr_pitch_thrown.gml</script>
       <script>scripts\scr_runners_on_base.gml</script>
       <script>scripts\scr_batter_swing.gml</script>
@@ -39,6 +46,8 @@
       <script>scripts\scr_deal_fielder.gml</script>
       <script>scripts\scr_pitch_taken.gml</script>
       <script>scripts\scr_take_strike.gml</script>
+      <script>scripts\scr_select_card.gml</script>
+      <script>scripts\scr_card_dropped.gml</script>
     </scripts>
     <scripts name="reducers">
       <script>scripts\scr_reducer_plate.gml</script>
@@ -48,14 +57,12 @@
       <script>scripts\scr_reducer_turn_manager.gml</script>
       <script>scripts\scr_reducer_decks.gml</script>
     </scripts>
-    <scripts name="card">
+    <scripts name="CARD-DEAL">
       <script>scripts\scr_deal_to_player.gml</script>
       <script>scripts\scr_set_obj_card_value.gml</script>
+      <script>scripts\scr_create_deck.gml</script>
+      <script>scripts\scr_deal_card.gml</script>
     </scripts>
-    <script>scripts\scr_create_deck.gml</script>
-    <script>scripts\scr_card_rank.gml</script>
-    <script>scripts\scr_card_suit.gml</script>
-    <script>scripts\scr_deal_card.gml</script>
     <scripts name="AI">
       <script>scripts\scr_pitch_strength.gml</script>
     </scripts>
@@ -78,12 +85,12 @@
       <script>scripts\scr_has_valid_target.gml</script>
       <script>scripts\scr_has_valid_turn.gml</script>
       <script>scripts\scr_is_walk.gml</script>
+      <script>scripts\scr_card_suit.gml</script>
+      <script>scripts\scr_card_rank.gml</script>
     </scripts>
     <scripts name="game_control">
       <script>scripts\scr_globals.gml</script>
-      <script>scripts\scrInitStore.gml</script>
       <script>scripts\scrInningGlobals.gml</script>
-      <script>scripts\scr_register_action.gml</script>
       <script>scripts\scrDeckGlobals.gml</script>
     </scripts>
     <scripts name="inning_state_machine">
@@ -95,9 +102,6 @@
     <scripts name="atbat_state_machine">
       <script>scripts\scr_atbat_state_execute.gml</script>
     </scripts>
-    <scripts name="store-change-handlers">
-      <script>scripts\scr_on_pitcher_hand_change.gml</script>
-    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_debug</font>
@@ -107,6 +111,7 @@
     <objects name="test_debug">
       <object>objects\obj_script_test</object>
       <object>objects\obj_debug_controller</object>
+      <object>objects\obj_store_view</object>
     </objects>
     <objects name="scoreboard">
       <object>objects\obj_inning_runs</object>
@@ -157,7 +162,9 @@
   <rooms name="rooms">
     <room>rooms\rm_field</room>
   </rooms>
-  <constants number="46">
+  <constants number="48">
+    <constant name="ATBAT_ACTION_CARD_DROPPED">"ATBAT_ACTION_CARD_DROPPED"</constant>
+    <constant name="ATBAT_ACTION_SELECT_CARD">"ATBAT_ACTION_SELECT_CARD"</constant>
     <constant name="ATBAT_ACTION_TAKE_STRIKE">"ATBAT_ACTION_TAKE_STRIKE"</constant>
     <constant name="ATBAT_ACTION_CONTACT">"ATBAT_ACTION_CONTACT"</constant>
     <constant name="ATBAT_ACTION_FIELD">"ATBAT_ACTION_FIELD"</constant>

@@ -27,7 +27,8 @@
             <kind>1</kind>
             <string>///create base object properties
 
-listeners = ds_list_create();
+listeners = ds_map_create();   //(map(propertyName, handler) //ds_list_create();
+propTypes = ds_map_create();   //map(propertyName, enum.type)
 </string>
           </argument>
         </arguments>

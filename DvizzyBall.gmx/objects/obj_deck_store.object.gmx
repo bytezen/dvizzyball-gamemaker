@@ -30,6 +30,11 @@
 data = ds_map_create();
 
 data[? PITCHER] = ds_list_create();
+data[? BATTER] = ds_list_create();
+
+propTypes[? PITCHER] = TYPE.list;
+propTypes[? BATTER] = TYPE.list;
+
 
 /*
 

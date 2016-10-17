@@ -13,6 +13,9 @@ console('     hand = ' +   scr_list_to_string(inst.store.data[? PITCHER]));
 with(inst) {
   for(var i=0; i < ds_list_size( new ); i++ ) {
      view[| i].value = new[| i];
+     //reset the position
+     view[| i].x = view[| i].startx;
+     view[| i].y = view[| i].starty;
   }
   
   //delete view instanaces that we don;t need
@@ -22,8 +25,5 @@ with(inst) {
      }
      ds_list_delete(view,ii);
   }
-  //iterate through the views and set the values to new value??
-  //for(var i=0; i < array_length_1d(view); i++) {
-  //    view[| i].value = new[| i];
-  //}
+
 }

@@ -31,6 +31,16 @@ data = ds_map_create();
 
 data[? "currentPitch"] = noone;
 data[? "pitchSequence"] = ds_list_create();
+data[? "currentSelectedCard"] = noone;  // the old global.card
+data[? "validDropObjects"] = ds_list_create();  // the old drop.targets
+data[? "playerTurn"] = noone;
+
+
+propTypes[? "currentPitch"] = TYPE.primitive;
+propTypes[? "pitchSequence"] = TYPE.list;
+propTypes[? "currentSelectedCard"] = TYPE.instance;  // the old global.card
+propTypes[? "validDropObjects"] = TYPE.list;  // the old drop.targets
+propTypes[? "playerTurn"] = TYPE.primitive;
 </string>
           </argument>
         </arguments>

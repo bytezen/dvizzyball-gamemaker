@@ -27,7 +27,7 @@ if( is_array(collection) ) {
     return -1;
 } 
 else if( ds_exists(collection,ds_type_list) ) {
-    return ds_list_find_index(argument1, argument0);
+    return ds_list_find_index(collection, value);
 } else {
     return -1;
 }

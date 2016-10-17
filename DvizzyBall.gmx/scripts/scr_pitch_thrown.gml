@@ -10,14 +10,14 @@
 */
 
 var instance = argument0;
-var card_value;
+
 
 //with( instance ) {
 //    card_value = value;
 //}
  
 //var value = scr_card_rank(argument0);
-card_value = scr_card_rank(instance.value);
+
 
 
 
@@ -26,7 +26,7 @@ if( scr_is_walk() ) {
     // we need to handle a walk situation
 } else {
     //scr_reducer_plate(ACTION.pitch, value);
-    scrDispatch( ATBAT_ACTION_PITCH, card_value);
+    scrDispatch( ATBAT_ACTION_PITCH, instance.value);
 /*
     // add this pitch to the pitch sequence
     ds_list_add(global.pitch_sequence,value);

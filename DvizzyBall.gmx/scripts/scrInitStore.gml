@@ -23,6 +23,8 @@ scr_register_action(ATBAT_ACTION_TAKE_STRIKE, scr_reducer_atbat);
 //map[? ATBAT_ACTION_PITCH] = arr;
 scr_register_action(ATBAT_ACTION_PITCH, scr_reducer_atbat);
 scr_register_action(ATBAT_ACTION_CONTACT, scr_reducer_atbat);
+scr_register_action(ATBAT_ACTION_SELECT_CARD, scr_reducer_atbat);
+scr_register_action(ATBAT_ACTION_CARD_DROPPED, scr_reducer_atbat);
 
 //arr = 0;
 //arr[0] = scr_reducer_inning;
@@ -38,5 +40,5 @@ scr_register_action(INNING_ACTION_CHANGE_STATE, scr_reducer_inning);
 
 scr_register_action(CARD_ACTION_DEAL_PITCHER, scr_reducer_decks);
 //scr_register_action(CARD_ACTION_DEAL_FIELDER, scr_reducer_decks);
-//scr_register_action(CARD_ACTION_DEAL_BATTER, scr_reducer_decks);
+scr_register_action(CARD_ACTION_DEAL_BATTER, scr_reducer_decks);
 

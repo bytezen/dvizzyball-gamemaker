@@ -36,7 +36,9 @@ console(" { set_store_value } for key: " );
 if( ds_map_exists(store.data, key) ) {
     console("         --> " + string(key));
     oldval = ds_map_find_value(store.data,key);
-    
+    if( key == "pitchSequence") {
+      console( "old pitch sequence = " + scr_list_to_string(oldval) );
+    }
     /*
     if ds_exists(oldval, ds_type_list) {
        console("         {oldValue } = " + scr_list_to_string(oldval) );
@@ -45,25 +47,27 @@ if( ds_map_exists(store.data, key) ) {
     */
     
     
-    if (is_int32(newval) || 
-       is_int64(newval) ||
-       is_real(newval)  || 
-       is_bool(newval)  || 
-       is_string(newval)) {
-      update = !(oldval == newval );
-    } else if(ds_exists(oldval,ds_type_list) ) {
+   if( store.propTypes[? key] == TYPE.list ){ //    ds_exists(newval,ds_type_list) ) {
+       console("          -- comparing old and new value lists..."); 
        update = !scr_lists_equal(oldval, newval);
+    } else if (store.propTypes[? key] == TYPE.primitive || store.propTypes[? key] == TYPE.instance ) { //is_int32(newval) ||    
+      console("          -- comparing old and new value primitives...");        
+      update = !(oldval == newval );
     } 
-        
+    console("                ... update = " + string(update));  
+    
+    
     if( update ) {       
+        //update the store
         store.data[? key] =  newval;
+        //see if there are any listeners for this property
+        //that need to be notified.
         
-        with( store ) {
-              for(var i=0; i < ds_list_size(listeners); i++) {
-                  //with( listeners[| i]) {
-                     script_execute(listeners[| i].store_change_handler, listeners[| i], oldval, newval);                        
-                  //}
-              }
+        if( ds_map_exists(store.listeners,key) ) {
+            var listeners = ds_map_find_value(store.listeners, key);
+            for(var i=0; i < ds_list_size(listeners); i++) {
+                script_execute(listeners[| i].store_change_handler, listeners[| i], oldval, newval);
+            }
         }
     } else {
       return noone;

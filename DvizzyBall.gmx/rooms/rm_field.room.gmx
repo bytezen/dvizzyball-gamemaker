@@ -68,6 +68,7 @@
     <instance objName="objInningController" x="64" y="0" name="inst_69994ED7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_scoreboard_controller" x="656" y="32" name="inst_80C0F31E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_drag_ctrl" x="32" y="0" name="inst_905DC710" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_store_view" x="0" y="16" name="inst_3AC1DA04" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

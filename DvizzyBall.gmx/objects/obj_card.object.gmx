@@ -29,6 +29,7 @@
 //startx = x;
 //starty = y;
 
+store = instance_find(store_atbat,0);
 // pitcher, fielder or batter deck
 player = noone;
 //drop_target = noone; //instance_find(obj_pitch_deck,0);
@@ -114,7 +115,14 @@ if( image_index != value )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( global.card != noone &amp;&amp; global.drop_targets != noone) {
+            <string>if( store_atbat.data[? "currentSelectedCard"] != noone &amp;&amp; 
+    ds_list_size(store_atbat.data[? "validDropObjects"]) &gt; 0 ) {
+    
+    scr_card_dropped(store_atbat.data[? "currentSelectedCard"]);
+}
+    
+/*     
+if( global.card != noone &amp;&amp; global.drop_targets != noone) {
     var i;
     var len = array_length_1d(global.drop_targets);
     var onTarget = noone;
@@ -145,29 +153,14 @@ if( image_index != value )
             y = starty;
             depth = -1;
         }
-        /* 
-        old logic    
-        if( position_meeting( mouse_x, mouse_y, drop_target ) ) {
-            with( drop_target ) {
-                image_index = global.card.value;
-                value = global.card.value;
-            }
-            with(global.card) {
-                instance_destroy();
-            }
-        } else {
-            with( global.card ) {
-                x = startx;
-                y = starty;
-                depth = -1;
-            }
-        }
-        */
+        
     }
     global.card = noone;
+    scr_card_dropped(id);
     
     //console();
 }
+*/
 </string>
           </argument>
         </arguments>
@@ -235,11 +228,17 @@ depth = -1;
             <kind>1</kind>
             <string>///allow card to be selected if it is currently valid
 
+console( " valid_target = " + string(scr_has_valid_target(id) ) );
+console( " valid_turn = " + string( scr_has_valid_turn(id)) );
+
+
 if( scr_has_valid_turn(id) &amp;&amp; 
     ( value &gt; 0 &amp;&amp; value &lt; 53 ) &amp;&amp; // 0 &amp; 53 are card back and transparent respectively
     scr_has_valid_target(id) )  { 
     
-        global.card = id;
+       // global.card = id;
+        scr_select_card(id);
+        
         depth = -10;
 }
 </string>

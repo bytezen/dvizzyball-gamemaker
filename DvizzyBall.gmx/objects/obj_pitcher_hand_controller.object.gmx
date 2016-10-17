@@ -36,7 +36,7 @@ store = instance_find(obj_deck_store,0);
 
 store_change_handler = scr_on_pitcher_hand_change;
 // Listen for Data Store changes ...
-scr_add_store_listener(store,id);
+scr_add_store_listener(store,PITCHER,id);
 view_dirty = false;
 
 // ... and handle them
@@ -48,10 +48,7 @@ view_dirty = false;
 // pitching hand -- padding = 10 cardWidth = 80
 for( var i = 0; i &lt; PITCHER_DECK_SIZE ; i++ ) {
     view[| i] = instance_create( x + i * 90 , y, obj_pitcher_card );
-    view[| i].player = PITCHER;
-//    pitchingHand[i].value = scr_deal_card(true);
-//    pitchingHand[i].rank = scr_card_rank( pitchingHand[i].value );
-//    pitchingHand[i].suit = scr_card_suit( pitchingHand[i].value );    
+    view[| i].player = PITCHER; 
 }
 </string>
           </argument>

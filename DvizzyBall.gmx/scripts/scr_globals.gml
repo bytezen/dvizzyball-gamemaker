@@ -2,6 +2,18 @@
 
 // Create some globals
 
+/* 
+this is a hack because ds_exists(id, ds_type_list)
+is returning true when id is a number...weird...
+*/
+enum TYPE {
+     primitive,
+     list,
+     instance
+}
+
+
+// SHOULD NOT NEED ENUMS beneath here
 enum TEAM {
     home,
     guest

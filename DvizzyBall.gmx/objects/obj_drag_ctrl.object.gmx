@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.card = noone;
-
+            <string>//global.card = noone;
+store = store_atbat;
 </string>
           </argument>
         </arguments>
@@ -50,31 +50,22 @@
           <argument>
             <kind>1</kind>
             <string>///Set Dragging flag
+/*
 if( global.card != noone ) {
     with(global.card) {
         x = mouse_x;
         y = mouse_y;
     }
 }
+*/
 
-
-///Move the card
-/*
-if( global.card != noone ) {
- if( mouse_check_button(mb_left) ) {
-        with( global.card ) {
-            x = mouse_x;
-            y = mouse_y;
-        }
- } else {
-    with(global.card) {
-        x = startx;
-        y = starty;
-    }
- }
+if( store.data[? "currentSelectedCard"] != noone ) {
+    store.data[? "currentSelectedCard"].x = mouse_x;
+    store.data[? "currentSelectedCard"].y = mouse_y;
 }
 
-*/
+
+
 </string>
           </argument>
         </arguments>

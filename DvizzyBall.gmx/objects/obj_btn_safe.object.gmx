@@ -29,6 +29,7 @@
 state = DISABLED;
 image_speed=0;
 label = 'SAFE';
+store = instance_find(store_atbat,0);
 </string>
           </argument>
         </arguments>
@@ -51,7 +52,8 @@ label = 'SAFE';
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>visible = global.turnState == FIELDER;
+            <string>//visible = global.turnState == FIELDER;
+visible = store.data[? "playerTurn"] == FIELDER;
 </string>
           </argument>
         </arguments>

@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///create card instances
 x = 32
-y = 460;
+y = 320;
 //Create views for the cards
 //view[PITCHER_DECK_SIZE-1] = ds_list_create() ;// noone;
 view = ds_list_create();
@@ -35,9 +35,9 @@ view = ds_list_create();
 // Data Store 
 store = instance_find(obj_deck_store,0);
 
-store_change_handler = scr_on_batter_hand_change;
 // Listen for Data Store changes ...
-scr_add_store_listener(store,BATTER,id);
+scr_add_store_listener(store,FIELDER,id);
+store_change_handler = scr_on_batter_hand_change;
 view_dirty = false;
 
 // ... and handle them
@@ -47,9 +47,9 @@ view_dirty = false;
 
 
 // pitching hand -- padding = 10 cardWidth = 80
-for( var i = 0; i &lt; BATTER_DECK_SIZE ; i++ ) {
+for( var i = 0; i &lt; FIELDER_DECK_SIZE ; i++ ) {
     view[| i] = instance_create( x + i * 90 , y, obj_batter_card );
-    view[| i].player = BATTER; 
+    view[| i].player = FIELDER; 
 }
 </string>
           </argument>

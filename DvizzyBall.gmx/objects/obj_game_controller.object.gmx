@@ -38,8 +38,8 @@ scrDeckGlobals();
 
 //Create card hands
 //pitcherCardValue[PITCHER_DECK_SIZE-1] = -1;
-fielderCardValue[FIELDER_DECK_SIZE-1] = -1;
-batterCardValue[BATTER_DECK_SIZE-1] = -1;
+//fielderCardValue[FIELDER_DECK_SIZE-1] = -1;
+//batterCardValue[BATTER_DECK_SIZE-1] = -1;
 
 
 //pitching hand instance location
@@ -60,17 +60,17 @@ for( var i = 0; i &lt; PITCHER_DECK_SIZE ; i++ ) {
 
 
 //fielder hand location
-var fielding_origin_x = 32;
-var fielding_origin_y = 320;
+//var fielding_origin_x = 32;
+//var fielding_origin_y = 320;
 
 // fielding hand -- padding = 20 cardHeight =  120
-for( var i = 0; i &lt; FIELDER_DECK_SIZE ; i++ ) {
-    oFieldingHand[i] = instance_create( fielding_origin_x + i * 90, fielding_origin_y , obj_fielder_card );
-    oFieldingHand[i].player = FIELDER;
+//for( var i = 0; i &lt; FIELDER_DECK_SIZE ; i++ ) {
+//    oFieldingHand[i] = instance_create( fielding_origin_x + i * 90, fielding_origin_y , obj_fielder_card );
+//    oFieldingHand[i].player = FIELDER;
 //    fieldingHand[i].value = scr_deal_card();
 //    fieldingHand[i].rank = scr_card_rank( fieldingHand[i].value );
 //    fieldingHand[i].suit = scr_card_suit( fieldingHand[i].value );        
-}
+//}
 
 
 
@@ -99,6 +99,7 @@ for( var i = 0; i &lt; FIELDER_DECK_SIZE ; i++ ) {
 
 //Create other sub_game_controllers
 instance_create(x,y,obj_batter_hand_controller);
+instance_create(x,y,obj_fielder_hand_controller);
 
 scr_play_ball();
 
@@ -142,6 +143,7 @@ repeat( PITCHER_DECK_SIZE ) {
     i++;
 }
 */
+/*
 i = 0;
 hand = global.decks[? FIELDER];
 
@@ -152,7 +154,7 @@ repeat ( FIELDER_DECK_SIZE ) {
     }    
     i++;
 }
-
+*/
 /*
 i = 0;
 hand = global.decks[? BATTER];

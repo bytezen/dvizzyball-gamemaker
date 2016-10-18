@@ -39,6 +39,6 @@ scr_register_action(INNING_ACTION_CHANGE_STATE, scr_reducer_inning);
 //map[? INNING_ACTION_CHANGE_STATE] = 
 
 scr_register_action(CARD_ACTION_DEAL_PITCHER, scr_reducer_decks);
-//scr_register_action(CARD_ACTION_DEAL_FIELDER, scr_reducer_decks);
+scr_register_action(CARD_ACTION_DEAL_FIELDER, scr_reducer_decks);
 scr_register_action(CARD_ACTION_DEAL_BATTER, scr_reducer_decks);
 

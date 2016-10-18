@@ -51,7 +51,7 @@
       <script>scripts\scr_select_card.gml</script>
       <script>scripts\scr_card_dropped.gml</script>
     </scripts>
-    <scripts name="reducers">
+    <scripts name="REDUCERS">
       <script>scripts\scr_reducer_plate.gml</script>
       <script>scripts\scr_reducer_atbat.gml</script>
       <script>scripts\scr_reducer_inning.gml</script>

@@ -34,9 +34,11 @@ view = ds_list_create();
 // Data Store 
 store = instance_find(obj_deck_store,0);
 
-store_change_handler = scr_on_pitcher_hand_change;
+
 // Listen for Data Store changes ...
 scr_add_store_listener(store,PITCHER,id);
+store_change_handler = scr_on_player_hand_change;
+//store_change_handler = scr_on_pitcher_hand_change;
 view_dirty = false;
 
 // ... and handle them

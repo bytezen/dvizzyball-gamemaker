@@ -75,17 +75,17 @@ for( var i = 0; i &lt; FIELDER_DECK_SIZE ; i++ ) {
 
 
 //batting hand location
-var batting_origin_x = 32;
-var batting_origin_y = 460;
+//var batting_origin_x = 32;
+//var batting_origin_y = 460;
 
 // batting hand -- padding = 20 cardHeight =  120
-for( var i = 0; i &lt; BATTER_DECK_SIZE ; i++ ) {
-    oBattingHand[i] = instance_create( batting_origin_x + i * 90, batting_origin_y , obj_batter_card );
-    oBattingHand[i].player = BATTER;
+//for( var i = 0; i &lt; BATTER_DECK_SIZE ; i++ ) {
+//    oBattingHand[i] = instance_create( batting_origin_x + i * 90, batting_origin_y , obj_batter_card );
+//    oBattingHand[i].player = BATTER;
 //    battingHand[i].value = scr_deal_card();
 //   battingHand[i].rank = scr_card_rank( battingHand[i].value );
 //    battingHand[i].suit = scr_card_suit( battingHand[i].value );        
-}
+//}
 
 
 // This will
@@ -96,9 +96,11 @@ for( var i = 0; i &lt; BATTER_DECK_SIZE ; i++ ) {
 // THIS DOES NOTHING RIGHT NOW
 //scr_play_ball();
 
+
+//Create other sub_game_controllers
+instance_create(x,y,obj_batter_hand_controller);
+
 scr_play_ball();
-
-
 
 </string>
           </argument>
@@ -151,6 +153,7 @@ repeat ( FIELDER_DECK_SIZE ) {
     i++;
 }
 
+/*
 i = 0;
 hand = global.decks[? BATTER];
 
@@ -161,8 +164,7 @@ repeat ( BATTER_DECK_SIZE ) {
     }    
     i++;
 }
-
-
+*/
 </string>
           </argument>
         </arguments>

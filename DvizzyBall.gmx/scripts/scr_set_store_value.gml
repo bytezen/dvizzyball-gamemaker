@@ -36,9 +36,7 @@ console(" { set_store_value } for key: " );
 if( ds_map_exists(store.data, key) ) {
     console("         --> " + string(key));
     oldval = ds_map_find_value(store.data,key);
-    if( key == "pitchSequence") {
-      console( "old pitch sequence = " + scr_list_to_string(oldval) );
-    }
+
     /*
     if ds_exists(oldval, ds_type_list) {
        console("         {oldValue } = " + scr_list_to_string(oldval) );
@@ -46,7 +44,8 @@ if( ds_map_exists(store.data, key) ) {
     }
     */
     
-    
+   //HACK:
+   //Use the property type map to choose an equality test 
    if( store.propTypes[? key] == TYPE.list ){ //    ds_exists(newval,ds_type_list) ) {
        console("          -- comparing old and new value lists..."); 
        update = !scr_lists_equal(oldval, newval);
@@ -62,8 +61,10 @@ if( ds_map_exists(store.data, key) ) {
         store.data[? key] =  newval;
         //see if there are any listeners for this property
         //that need to be notified.
+    
         
         if( ds_map_exists(store.listeners,key) ) {
+        
             var listeners = ds_map_find_value(store.listeners, key);
             for(var i=0; i < ds_list_size(listeners); i++) {
                 script_execute(listeners[| i].store_change_handler, listeners[| i], oldval, newval);

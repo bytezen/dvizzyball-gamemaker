@@ -24,6 +24,8 @@
     <scripts name="VIEWS">
       <scripts name="CARD">
         <script>scripts\scr_on_pitcher_hand_change.gml</script>
+        <script>scripts\scr_on_batter_hand_change.gml</script>
+        <script>scripts\scr_on_player_hand_change.gml</script>
       </scripts>
     </scripts>
     <scripts name="STORES">
@@ -107,56 +109,62 @@
     <font>fonts\fnt_debug</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_changeable_parent</object>
-    <objects name="test_debug">
-      <object>objects\obj_script_test</object>
-      <object>objects\obj_debug_controller</object>
-      <object>objects\obj_store_view</object>
+    <objects name="STORE">
+      <object>objects\obj_store_parent</object>
+      <object>objects\obj_deck_store</object>
+      <object>objects\obj_store_controller</object>
+      <object>objects\store_atbat</object>
     </objects>
-    <objects name="scoreboard">
-      <object>objects\obj_inning_runs</object>
-      <object>objects\obj_sb_team_label</object>
-      <object>objects\obj_sb_count_label</object>
-      <object>objects\obj_strike_count</object>
-      <object>objects\obj_atbat_count</object>
-      <object>objects\obj_out_count</object>
-      <object>objects\obj_sb_status_label</object>
-      <object>objects\obj_indicator</object>
-    </objects>
-    <objects name="player_decks">
-      <object>objects\oDiscard</object>
-      <object>objects\obj_card</object>
-      <object>objects\obj_pitcher_card</object>
-      <object>objects\obj_batter_card</object>
-      <object>objects\obj_fielder_card</object>
-      <object>objects\obj_pitcher_card_old</object>
-      <object>objects\obj_fielder_card_old</object>
-      <object>objects\obj_batter_card_old</object>
-    </objects>
-    <objects name="controllers">
+    <objects name="CONTROLLERS">
       <object>objects\obj_drag_ctrl</object>
       <object>objects\objInningController</object>
       <object>objects\obj_game_controller</object>
       <object>objects\obj_atbat_controller</object>
       <object>objects\obj_scoreboard_controller</object>
       <object>objects\obj_pitcher_hand_controller</object>
+      <object>objects\obj_batter_hand_controller</object>
+      <object>objects\obj_fielder_hand_controller</object>
     </objects>
-    <objects name="drop_targets">
-      <object>objects\obj_pitch_deck</object>
-      <object>objects\obj_fielder_deck</object>
-      <object>objects\obj_batter_deck</object>
-      <object>objects\obj_parent_drop_target</object>
-      <object>objects\obj_drop_take_strike</object>
+    <objects name="COMPONENTS">
+      <objects name="cards">
+        <object>objects\oDiscard</object>
+        <object>objects\obj_card</object>
+        <object>objects\obj_pitcher_card</object>
+        <object>objects\obj_batter_card</object>
+        <object>objects\obj_fielder_card</object>
+        <object>objects\obj_pitcher_card_old</object>
+        <object>objects\obj_fielder_card_old</object>
+        <object>objects\obj_batter_card_old</object>
+      </objects>
+      <objects name="scoreboard">
+        <object>objects\obj_inning_runs</object>
+        <object>objects\obj_sb_team_label</object>
+        <object>objects\obj_sb_count_label</object>
+        <object>objects\obj_strike_count</object>
+        <object>objects\obj_atbat_count</object>
+        <object>objects\obj_out_count</object>
+        <object>objects\obj_sb_status_label</object>
+        <object>objects\obj_indicator</object>
+      </objects>
+      <objects name="buttons">
+        <object>objects\obj_btn_done</object>
+        <object>objects\obj_btn_safe</object>
+      </objects>
+      <objects name="drop_targets">
+        <object>objects\obj_pitch_deck</object>
+        <object>objects\obj_fielder_deck</object>
+        <object>objects\obj_batter_deck</object>
+        <object>objects\obj_parent_drop_target</object>
+        <object>objects\obj_drop_take_strike</object>
+      </objects>
     </objects>
-    <objects name="buttons">
-      <object>objects\obj_btn_done</object>
-      <object>objects\obj_btn_safe</object>
+    <objects name="VIEWS">
+      <object>objects\obj_changeable_parent</object>
     </objects>
-    <objects name="STORE">
-      <object>objects\obj_store_parent</object>
-      <object>objects\obj_deck_store</object>
-      <object>objects\obj_store_controller</object>
-      <object>objects\store_atbat</object>
+    <objects name="test_debug">
+      <object>objects\obj_script_test</object>
+      <object>objects\obj_debug_controller</object>
+      <object>objects\obj_store_view</object>
     </objects>
   </objects>
   <rooms name="rooms">

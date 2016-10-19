@@ -29,6 +29,7 @@
 
 instance_create(x,y,obj_deck_store);
 instance_create(x,y,store_atbat);
+instance_create(x,y,store_inning);
 </string>
           </argument>
         </arguments>

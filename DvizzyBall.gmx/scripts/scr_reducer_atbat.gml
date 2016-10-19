@@ -11,6 +11,15 @@ var deckStore = instance_find(obj_deck_store, 0);
 console('...scr_reducer_atbat handling action: ' + action);
 
 switch(action) {
+    //case ATBAT_ACTION_BATTER_TURN_COMPLETE:
+         // when this action is called then all of the batter, steals,
+         // the swing or pitch taken
+         // properties should be set in a model cache.
+         // This action will handle (a) clearing the cache and (b) copying the cache
+         // values to the store values that will trigger UI and game updates
+         // Don't forget to change the ATBAT_STATE to defense
+                  
+      //   break;
     case ATBAT_ACTION_CARD_DROPPED:
         store.data[? "currentSelectedCard"] = noone;
          break;
@@ -24,6 +33,7 @@ switch(action) {
         ds_list_clear(store.data[? "validDropObjects"]);
         ds_list_add(store.data[? "validDropObjects"], instance_find(obj_pitch_deck,0));
         store.data[? "playerTurn"] = PITCHER;
+        store.data[? "state"] = ATBAT_STATE_PITCHING;
         //global.turnState = PITCHER;
         break;
     case ATBAT_ACTION_PITCH:
@@ -63,22 +73,27 @@ switch(action) {
         ds_list_destroy(oldSequence);
         ds_list_destroy(oldhand);
                 
-        //global.currentPitch = payload;    
-        //global.turnState = BATTER; //TURN.offense;
-        //global.drop_targets = 0 ;
-        //global.drop_targets[0] = 
                 
         // now its the batters turn
         // if there are runners than the batter can steal or swing
         // otherwise they can only swing
         if( scr_runners_on_base() ) {
+            store.data[? "state"] = ATBAT_STATE_HITTING_OR_STEALING;
+
             global.plateState = PLATE.swing_or_steal;
             global.turnState = BASE_RUNNER;
             
             //TODO:
             //   add drop targets for each base that is a valid base to steal
         } else {
-            global.turnState = BATTER;
+            store.data[? "playerTurn"] = BATTER; 
+            //setup new drop targets
+            ds_list_clear(store.data[? "validDropObjects"]);
+            ds_list_add(store.data[? "validDropObjects"], instance_find(obj_batter_deck,0))
+            ds_list_add(store.data[? "validDropObjects"], instance_find(obj_drop_take_strike,0));
+
+            store.data[? "state"] = ATBAT_STATE_HITTING;
+            //global.turnState = BATTER;
             global.plateState = PLATE.swing;            
             global.drop_targets[0] = instance_find(obj_batter_deck, 0);  
             global.drop_targets[1] = instance_find(obj_drop_take_strike, 0);      
@@ -104,6 +119,12 @@ switch(action) {
     case ATBAT_ACTION_TAKE_STRIKE:
         console('... ... action: ' + action);
         // clear the current pitch ...
+        // clear the batter deck or strike deck
+        // clear the pitch deck
+        // set the atbat state to pitching
+        // this should happen independently of inning over?
+        // the inning will handle any re-deals and such if necessary
+        
         var pitchInstance = global.currentPitch;
         show_debug_message("length of pitch hand = " + string(array_length_1d(global.decks[? PITCHER])));
         global.currentPitch = noone;
@@ -157,7 +178,7 @@ switch(action) {
         break;
     case ATBAT.over:
         console("at bat resolved");
-        global.inningStatus = INNING_STATUS_BATTER_ON_DECK;
+//        global.inningStatus = INNING_STATUS_BATTER_ON_DECK;
         break;        
     default:
         show_error("unknown atbat action: " + string(action), true);

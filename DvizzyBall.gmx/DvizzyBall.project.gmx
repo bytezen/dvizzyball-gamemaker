@@ -92,7 +92,6 @@
     </scripts>
     <scripts name="game_control">
       <script>scripts\scr_globals.gml</script>
-      <script>scripts\scrInningGlobals.gml</script>
       <script>scripts\scrDeckGlobals.gml</script>
     </scripts>
     <scripts name="inning_state_machine">
@@ -114,12 +113,12 @@
       <object>objects\obj_deck_store</object>
       <object>objects\obj_store_controller</object>
       <object>objects\store_atbat</object>
+      <object>objects\store_inning</object>
     </objects>
     <objects name="CONTROLLERS">
       <object>objects\obj_drag_ctrl</object>
-      <object>objects\objInningController</object>
+      <object>objects\inning_controller</object>
       <object>objects\obj_game_controller</object>
-      <object>objects\obj_atbat_controller</object>
       <object>objects\obj_scoreboard_controller</object>
       <object>objects\obj_pitcher_hand_controller</object>
       <object>objects\obj_batter_hand_controller</object>
@@ -161,7 +160,7 @@
     <objects name="VIEWS">
       <object>objects\obj_changeable_parent</object>
     </objects>
-    <objects name="test_debug">
+    <objects name="DEBUG">
       <object>objects\obj_script_test</object>
       <object>objects\obj_debug_controller</object>
       <object>objects\obj_store_view</object>

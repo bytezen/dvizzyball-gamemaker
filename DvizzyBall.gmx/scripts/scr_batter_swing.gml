@@ -43,10 +43,16 @@ if(!madeContact) {
     }
     */
 } else {
-    //this uses the old call reducer directly method
     //TODO: change to something like
+    /*
+     Change this dispatch to an action whose result witll queue the store value change until the 
+    batter's turn is over (i.e. an ATBAT_ACTION_BATTER_TURN_COMPLETE action is dispatced.  The
+    reducer can received the TURN_COMPLETE action and copy cached values over to store properties
+    that will trigger UI/logic updates. The ideas here is to delay upating the model until it can be done as a 
+    batch update.  This way the model will update and all of the UI components will change together.
+    */
+    
     scrDispatch( ATBAT_ACTION_CONTACT, rank )
-    //scr_reducer_atbat(ATBAT.contact,rank);
 }
 
 //TODO:

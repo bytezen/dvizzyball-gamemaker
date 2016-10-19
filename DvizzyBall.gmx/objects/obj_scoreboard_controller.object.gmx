@@ -26,14 +26,15 @@
           <argument>
             <kind>1</kind>
             <string>///setup control of scoreboard view objects
+store = instance_find(store_inning,0);
 
 props = ds_map_create();
-props[? "balls"] = global.inningStatus[? "balls"];
-props[? "strikes"] = global.inningStatus[? "strikes"];
-props[? "outs"] = global.inningStatus[? "outs"];
+props[? "balls"] = store.data[? "balls"];
+props[? "strikes"] = store.data[? "strikes"];
+props[? "outs"] = store.data[? "outs"];
 
 
-props[? "inningNumber"] = global.inningStatus[? "inningNumber"];
+props[? "inningNumber"] = store.data[? "inningNumber"];
 props[? "homeScore"] = global.gameStatus[? "homeScore"];
 props[? "guestScore"] = global.gameStatus[? "guestScore"];
 
@@ -106,7 +107,8 @@ view_inning_indicator = obj_indicator;
           <argument>
             <kind>1</kind>
             <string>///testing trigger of a ball
-global.inningStatus[? LBL_BALLS]++;
+var store = instance_find(store_inning,0);
+store.data[? LBL_BALLS]++;
 </string>
           </argument>
         </arguments>
@@ -155,7 +157,7 @@ global.inningStatus[? LBL_BALLS]++;
             <kind>1</kind>
             <string>///update properties from store
 
-props[? "balls"] = global.inningStatus[? "balls"];
+props[? "balls"] = store.data[? "balls"];
 </string>
           </argument>
         </arguments>
@@ -184,10 +186,10 @@ props[? "balls"] = global.inningStatus[? "balls"];
 // to only update the properties that have changed
 
 //update props
-props[? "balls"] = global.inningStatus[? "balls"];
-props[? "strikes"] = global.inningStatus[? "strikes"];
-props[? "outs"] = global.inningStatus[? "outs"];
-props[? "inningHalf"] = global.inningStatus[? "inningHalf"];
+props[? "balls"] = store.data[? "balls"];
+props[? "strikes"] = store.data[? "strikes"];
+props[? "outs"] = store.data[? "outs"];
+props[? "inningHalf"] = store.data[? "inningHalf"];
 
 props[? "inningNumber"] = global.gameStatus[? "inningNumber"];
 props[? "homeScore" ] = global.gameStatus[? "homeScore"];

@@ -33,12 +33,14 @@ starty = y;
 
 // pitcher, fielder or batter deck
 player = PITCHER;
+//under which players's turns can this card be selected
 valid_turns = ds_list_create();
 ds_list_add(valid_turns, PITCHER); 
 ds_list_add(valid_turns, FIELDER);
 //valid_turns[0] = PITCHER; //TURN.pitch;
 //valid_turns[1] = FIELDER; //TURN.defense;
 
+//where can this card be dropped
 valid_targets = ds_list_create();
 ds_list_add(valid_targets, instance_find(obj_pitch_deck,0));
 ds_list_add(valid_targets, instance_find(obj_fielder_deck,0));

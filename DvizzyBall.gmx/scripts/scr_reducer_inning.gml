@@ -10,15 +10,15 @@
 
 var action = argument0;
 var payload = argument1;
-
-
+var store = instance_find(store_inning, 0);
 
 
 switch (action) {
     case INNING_ACTION_CHANGE_STATE:
         console('... {INNING_REDUCER} handling action: ' + action);
         console("... ... state = " + payload);
-        global.inningStatus[? "state"] = payload;
+        scr_set_store_value(store, "state", payload);
+        //global.inningStatus[? "state"] = payload;
         
         break;
     case INNING_ACTION_PLAY_BALL:
@@ -47,9 +47,11 @@ switch (action) {
         console('... {INNING_REDUCER} handling action: ' + action);    
         console("action: " + action + "  ...STRIKE...");
         // update the global inning state
-        global.inningStatus[? "strikes"]++;
+        var strikes = store.data[? "strikes"];
+        scr_set_store_value(store, "strikes", strikes + 1);
+        //global.inningStatus[? "strikes"]++;
         
-        console(" total strikes = " + string(global.inningStatus[? "strikes"]));
+        console(" total strikes = " + string(store.data[? "strikes"]));
         break;
 //    case INNING_ACTION_SINGLE:
 //        break;

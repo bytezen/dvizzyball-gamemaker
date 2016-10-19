@@ -28,6 +28,10 @@
             <string>showStateStatus = true;
 x = 50;
 y = room_height;
+
+store = ds_map_create();
+store[? "atbat"] = instance_find(store_atbat,0);
+store[? "inning"]= instance_find(store_inning,0);
 </string>
           </argument>
         </arguments>
@@ -50,15 +54,25 @@ y = room_height;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( global.show_debug ) {
+            <string>cursorx = x;
+cursory = y;
 
-    txt = "inning state = " + global.inningStatus[? "state"];
+if( global.show_debug ) {
+
+    txt = "inning state = " + store[? "inning"].data[? "state"];
     
     draw_set_color(c_black);
-    draw_rectangle(x, y, x + string_width(txt), y - string_height(txt), false);
+    draw_rectangle(cursorx, cursory, cursorx + string_width(txt), cursory - string_height(txt), false);
     draw_set_color(c_white);
     draw_text(x, y - string_height(txt),txt);        
+
+    cursorx += string_width(txt) + 40;
     
+    txt = "atbat state = " +  store[? "atbat"].data[? "state"]; 
+    draw_set_color(c_blue);
+    draw_rectangle(cursorx, cursory, cursorx + string_width(txt), cursory - string_height(txt), false);
+    draw_set_color(c_white);
+    draw_text(cursorx, cursory - string_height(txt),txt);        
     
 }
 </string>

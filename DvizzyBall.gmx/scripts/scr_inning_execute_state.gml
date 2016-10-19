@@ -1,13 +1,15 @@
 /// scr_inning_execute_state()
 
-var state = global.inningStatus[? "state"];
+//var state = global.inningStatus[? "state"];
+var store = instance_find(store_inning,0);
+var state = store.data[? "state"];
 
-switch( global.inningStatus[? "state"] ) {
+switch( state ) {
     case STATE_NONE:
         //console("{inning_execute_state} executing: " + global.inningStatus[? "state"] );
         break;
     case INNING_STATE_START:
-        console("{inning_execute_state} executing: " + global.inningStatus[? "state"] );  
+        console("{inning_execute_state} executing: " + store.data[? "state"] );  
         scr_deal_pitcher();
         scr_deal_fielder();
         scr_deal_batter();

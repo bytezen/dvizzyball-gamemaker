@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>
 scr_globals();
-scrInningGlobals();
+//scrInningGlobals();
 scrInitStore();
 scrDeckGlobals();
 //TODO: Replace all of the above with initializing data stores

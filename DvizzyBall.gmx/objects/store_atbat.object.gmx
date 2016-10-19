@@ -34,7 +34,7 @@ data[? "pitchSequence"] = ds_list_create();
 data[? "currentSelectedCard"] = noone;  // the old global.card
 data[? "validDropObjects"] = ds_list_create();  // the old drop.targets
 data[? "playerTurn"] = noone;
-
+data[? "state"] = ATBAT_STATE_NONE;
 
 propTypes[? "currentPitch"] = TYPE.primitive;
 propTypes[? "pitchSequence"] = TYPE.list;

@@ -29,6 +29,7 @@
 
 listeners = ds_map_create();   //(map(propertyName, handler) //ds_list_create();
 propTypes = ds_map_create();   //map(propertyName, enum.type)
+data = ds_map_create();
 </string>
           </argument>
         </arguments>

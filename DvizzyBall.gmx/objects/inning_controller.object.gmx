@@ -2,7 +2,7 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -25,14 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-
-prevState = noone; //global.inningStatus[? "state"];
-
-//not sure if we need this or not
-//setup the property cache
-//propertyCache = ds_map_create();
-//propertyCache[? inningState] = global.inningStatus;
+            <string>// Data Store 
+store = instance_find(store_inning,0);
 
 </string>
           </argument>
@@ -63,11 +57,12 @@ prevState = noone; //global.inningStatus[? "state"];
 
 
 
-
+/*
 if( prevState != global.inningStatus[? "state"] ) {
     console("{INNING CONTROLLER STATE CHANGED} from: " + string(prevState) + " to: " + global.inningStatus[? "state"]);
     prevState = global.inningStatus[? "state"];
 }
+*/
 scr_inning_execute_state();
 
 /*

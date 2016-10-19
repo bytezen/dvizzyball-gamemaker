@@ -56,7 +56,9 @@ image_speed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>visible = (value != noone || store.data[? "playerTurn"] == BATTER)
+            <string>visible = (value != noone || 
+           store.data[? "state"] == ATBAT_STATE_HITTING ||
+           store.data[? "state"] == ATBAT_STATE_HITTING_OR_STEALING );
 </string>
           </argument>
         </arguments>

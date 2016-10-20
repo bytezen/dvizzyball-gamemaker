@@ -29,7 +29,7 @@
 store = instance_find(store_atbat,0);
 
 player = PITCHER;
-
+name = PITCH_DROP_TARGET;
 value = noone;
 prev_value = noone;
 on_change_handler = scr_pitch_thrown;

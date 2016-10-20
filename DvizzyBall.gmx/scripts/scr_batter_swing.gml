@@ -11,23 +11,17 @@
  
 */
 
-var instance = argument0;
-var card_value;
-
- 
-with( instance ) {
-  card_value = value;
-}
-
-var rank = scr_card_rank(card_value);
+var card = argument0;
+var store = instance_find(store_atbat,0);
+var rank = scr_card_rank(card.value);
 
 // case (1)
-var madeContact = scr_is_divisible(global.currentPitch, rank)
+var madeContact = scr_is_divisible(store.data[? "currentPitch"], rank)
 //console(" current pitch = " + string(global.currentPitch) + " swing value = " + string(value) + " MADE CONTACT = " + string(madeContact));
 
 
 if(!madeContact) {
-    scrDispatch(INNING_ACTION_STRIKE, id);
+    scrDispatch(INNING_ACTION_STRIKE, card);
     
     /*
     TODO: Move this logic to the inning controller
@@ -52,7 +46,7 @@ if(!madeContact) {
     batch update.  This way the model will update and all of the UI components will change together.
     */
     
-    scrDispatch( ATBAT_ACTION_CONTACT, rank )
+    scrDispatch( ATBAT_ACTION_CONTACT, card )
 }
 
 //TODO:

@@ -1,3 +1,5 @@
+///scr_card_suit(value)
+
 /*
     argument0 -- integer between [1,52] that represents the numerical ordering of the card
                  by suit.

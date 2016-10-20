@@ -25,6 +25,7 @@ scr_register_action(ATBAT_ACTION_PITCH, scr_reducer_atbat);
 scr_register_action(ATBAT_ACTION_CONTACT, scr_reducer_atbat);
 scr_register_action(ATBAT_ACTION_SELECT_CARD, scr_reducer_atbat);
 scr_register_action(ATBAT_ACTION_CARD_DROPPED, scr_reducer_atbat);
+scr_register_action(ATBAT_ACTION_BATTER_SAFE, scr_reducer_atbat);
 
 //arr = 0;
 //arr[0] = scr_reducer_inning;

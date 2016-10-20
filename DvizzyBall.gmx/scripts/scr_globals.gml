@@ -111,7 +111,7 @@ global.turnState = noone;
 global.plateState = PLATE.pitch;
 //global.atBatState = ATBAT_STATE_NONE;
 
-global.drop_targets = noone;  // the current active drop targets depends on turnState
+//global.drop_targets = noone;  // the current active drop targets depends on turnState
 
 
 //global.currentPitch = noone;

@@ -26,7 +26,7 @@ if( scr_is_walk() ) {
     // we need to handle a walk situation
 } else {
     //scr_reducer_plate(ACTION.pitch, value);
-    scrDispatch( ATBAT_ACTION_PITCH, instance.value);
+    scrDispatch( ATBAT_ACTION_PITCH, instance);
 /*
     // add this pitch to the pitch sequence
     ds_list_add(global.pitch_sequence,value);

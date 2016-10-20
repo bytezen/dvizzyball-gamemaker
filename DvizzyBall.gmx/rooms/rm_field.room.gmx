@@ -55,10 +55,10 @@
     <instance objName="obj_pitch_deck" x="832" y="240" name="inst_F7789341" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fielder_deck" x="832" y="384" name="inst_C234B92E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_batter_deck" x="832" y="528" name="inst_A0F0F4B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sb_team_label" x="256" y="32" name="inst_9008B46F" locked="0" code="event_inherited();&#xA;image_index = LBL_HOME;&#xA;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sb_team_label" x="256" y="64" name="inst_E445D1CA" locked="0" code="event_inherited();&#xA;image_index = LBL_GUEST;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sb_team_label" x="432" y="48" name="inst_72AA762D" locked="0" code="event_inherited();&#xA;image_index = 2;&#xA;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_indicator" x="416" y="64" name="inst_1661E1E7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sb_team_label" x="32" y="32" name="inst_9008B46F" locked="0" code="event_inherited();&#xA;image_index = LBL_HOME;&#xA;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sb_team_label" x="32" y="80" name="inst_E445D1CA" locked="0" code="event_inherited();&#xA;image_index = LBL_GUEST;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sb_team_label" x="192" y="48" name="inst_72AA762D" locked="0" code="event_inherited();&#xA;image_index = 2;&#xA;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_indicator" x="176" y="64" name="inst_1661E1E7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_drop_take_strike" x="718" y="528" name="inst_45B10BDC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_btn_done" x="828" y="160" name="inst_1CB915B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_btn_safe" x="720" y="162" name="inst_00F35CFD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -66,9 +66,13 @@
     <instance objName="obj_pitcher_hand_controller" x="32" y="192" name="inst_A416B465" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_game_controller" x="0" y="0" name="inst_CE73E8BF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="inning_controller" x="64" y="0" name="inst_69994ED7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_scoreboard_controller" x="656" y="32" name="inst_80C0F31E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_scoreboard_controller" x="352" y="32" name="inst_80C0F31E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_drag_ctrl" x="32" y="0" name="inst_905DC710" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_store_view" x="0" y="16" name="inst_3AC1DA04" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_base" x="560" y="64" name="inst_A2E2CB28" locked="0" code="name = SECOND_BASE;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_base" x="496" y="112" name="inst_BE241B32" locked="0" code="name = THIRD_BASE;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_base" x="624" y="112" name="inst_CEE05EE9" locked="0" code="name = FIRST_BASE;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_base" x="560" y="192" name="inst_18CF7381" locked="0" code="name = HOME_BASE;&#xA;image_index = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

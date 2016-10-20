@@ -7,6 +7,7 @@ var action = argument0;
 var payload = argument1;
 var store = instance_find(store_atbat,0);
 var deckStore = instance_find(obj_deck_store, 0);
+var card = noone;
 
 console('...scr_reducer_atbat handling action: ' + action);
 
@@ -38,7 +39,8 @@ switch(action) {
         break;
     case ATBAT_ACTION_PITCH:
         // expected payload: integer
-        console('... ... action: ' + action + " payload: " + string(payload));
+        card = payload;
+        console('... ... action: ' + action + " payload: " + scr_card_toString(card));
 
         
         // update the pitch sequence
@@ -47,12 +49,13 @@ switch(action) {
         
         ds_list_copy(newSequence, oldSequence);
         
-        ds_list_add(newSequence, payload);
+        ds_list_add(newSequence, card.value);
         
         scr_set_store_value(store, "pitchSequence", newSequence);
                         
         //update the current pitch
-        scr_set_store_value(store, "currentPitch", payload);
+        scr_set_store_value(store, "currentPitch", card.value);
+        scr_set_store_value(store, "currentPitchCard", card );
         
         //update the pitcher's hand
         var oldhand = deckStore.data[? PITCHER];
@@ -61,7 +64,7 @@ switch(action) {
 
         
         for(var i=0; i < ds_list_size(newhand); i++) {
-          if(payload == newhand[| i]) {
+          if( card.value == newhand[| i]) {
              ds_list_delete(newhand, i);
              break;
           }
@@ -125,9 +128,12 @@ switch(action) {
         // this should happen independently of inning over?
         // the inning will handle any re-deals and such if necessary
         
-        var pitchInstance = global.currentPitch;
+        var pitchInstance = store.data[? "currentPitchCard"];//global.currentPitch;
         show_debug_message("length of pitch hand = " + string(array_length_1d(global.decks[? PITCHER])));
-        global.currentPitch = noone;
+        
+        //clear currentPitch
+        store.data[? "currentPitchCard"] = noone;
+        store.data[? "currentPitch"] = noone;
     
         with(pitchInstance) { instance_destroy(); }
 
@@ -155,8 +161,11 @@ switch(action) {
         */
     case ATBAT_ACTION_CONTACT:  // the ball is in play; defense can try to field
         //global.currentRunnerInPlay = value;
+        
+        
+        card = payload;
         global.turnState = FIELDER;
-        var bases = scr_bases(global.currentPitch, value);
+        var bases = scr_bases(store_atbat.data[? "currentPitch"], card.value);
         //global.playerState = FIELDER;
         //global.plateState = PLATE.field;
         
@@ -164,11 +173,29 @@ switch(action) {
         
         // for now all cards move! 
         // eventually give need to determine if there are force plays?
-        
+
+        store_atbat.data[? "playerTurn"] = FIELDER; 
+        store_atbat.data[? "state"] = ATBAT_STATE_FIELDING;
+                
         //for potential home run you only have a play on hit
         //for triple you have a play at third and at home (n times, depending on the number of runners that were on base) 
-        global.drop_targets = 0;
-        global.drop_targets[0] = instance_find(obj_fielder_deck,0);
+        ds_list_clear(store_atbat.data[? "validDropObjects"]) 
+        ds_list_add(store_atbat.data[? "validDropObjects"], instance_find(obj_fielder_deck,0 ));
+
+        //update the batters hand
+        var oldhand = deckStore.data[? BATTER];
+        var newhand = ds_list_create();
+        ds_list_copy(newhand, oldhand);
+        
+        for(var i=0; i < ds_list_size(newhand); i++) {
+          if( card.value == newhand[| i]) {
+             ds_list_delete(newhand, i);
+             break;
+          }
+        }
+        scr_set_store_value(deckStore,"BATTER",newhand);        
+        
+        
         /*
         global.drop_targets[0] = instance_find(obj_first_base,0);
         global.drop_targets[1] = instance_find(obj_second_base,0);
@@ -176,6 +203,14 @@ switch(action) {
         global.drop_targets[3] = instance_find(obj_home_base,0);
         */
         break;
+        
+    case ATBAT_ACTION_ADVANCE_BASE:
+         break;
+         
+    case ATBAT_ACTION_BATTER_SAFE:
+         
+         break;
+         
     case ATBAT.over:
         console("at bat resolved");
 //        global.inningStatus = INNING_STATUS_BATTER_ON_DECK;

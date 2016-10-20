@@ -1,7 +1,7 @@
 ///scr_card_dropped(id)
 
 
-var card = store_atbat.data[? "currentSelectedCard"];
+var card = argument0; //store_atbat.data[? "currentSelectedCard"];
 var validTarget = store_atbat.data[? "validDropObjects"]
 var drop_hit = noone;
 var over_valid_target = false;

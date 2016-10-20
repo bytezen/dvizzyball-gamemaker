@@ -34,9 +34,11 @@ data[? "strikes"] = 0;
 data[? "inningHalf"] = INNING_HALF_TOP;
 data[? "homeTeamRuns"] = 0;
 data[? "visitingTeamRuns"] = 0; 
-data[? "firstBase"] = noone;
-data[? "secondBase"] = noone;
-data[? "thirdBase"] = noone;
+data[? FIRST_BASE] = noone;
+data[? SECOND_BASE] = noone;
+data[? THIRD_BASE] = noone;
+data[? "baseRunners"] = ds_list_create();
+
  
 propTypes[? "state"] = TYPE.primitive;
 propTypes[? "outs"] = TYPE.primitive;
@@ -48,6 +50,7 @@ propTypes[? "visitingTeamRuns"] = TYPE.primitive;
 propTypes[? "firstBase"] = TYPE.primitive;
 propTypes[? "secondBase"] = TYPE.primitive;
 propTypes[? "thirdBase"] = TYPE.primitive;
+propTypes[? "baseRunners"] = TYPE.list;
 </string>
           </argument>
         </arguments>

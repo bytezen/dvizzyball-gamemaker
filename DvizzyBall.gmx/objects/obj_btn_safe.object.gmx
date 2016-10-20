@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_btn_parent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>click_handler = noone;
+            <string>click_handler = scr_batter_safe;
 state = DISABLED;
 image_speed=0;
 label = 'SAFE';
@@ -52,7 +52,7 @@ store = instance_find(store_atbat,0);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//visible = global.turnState == FIELDER;
+            <string>event_inherited();
 visible = store.data[? "playerTurn"] == FIELDER;
 </string>
           </argument>

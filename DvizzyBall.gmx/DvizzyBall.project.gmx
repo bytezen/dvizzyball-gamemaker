@@ -17,6 +17,7 @@
     <sprite>sprites\spr_inning_indicator</sprite>
     <sprite>sprites\spr_card_drop</sprite>
     <sprite>sprites\spr_button</sprite>
+    <sprite>sprites\spr_base</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -50,6 +51,7 @@
       <script>scripts\scr_take_strike.gml</script>
       <script>scripts\scr_select_card.gml</script>
       <script>scripts\scr_card_dropped.gml</script>
+      <script>scripts\scr_batter_safe.gml</script>
     </scripts>
     <scripts name="REDUCERS">
       <script>scripts\scr_reducer_plate.gml</script>
@@ -72,6 +74,7 @@
       <script>scripts\scr_factors.gml</script>
       <script>scripts\scr_is_divisible.gml</script>
       <script>scripts\console.gml</script>
+      <script>scripts\scr_card_toString.gml</script>
     </scripts>
     <scripts name="list-utils">
       <script>scripts\scr_list_intersection.gml</script>
@@ -102,6 +105,9 @@
     <script>scripts\scr_initialize_drop_target.gml</script>
     <scripts name="atbat_state_machine">
       <script>scripts\scr_atbat_state_execute.gml</script>
+    </scripts>
+    <scripts name="DEBUG">
+      <script>scripts\debug_got_here.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -148,6 +154,7 @@
       <objects name="buttons">
         <object>objects\obj_btn_done</object>
         <object>objects\obj_btn_safe</object>
+        <object>objects\obj_btn_parent</object>
       </objects>
       <objects name="drop_targets">
         <object>objects\obj_pitch_deck</object>
@@ -156,6 +163,7 @@
         <object>objects\obj_parent_drop_target</object>
         <object>objects\obj_drop_take_strike</object>
       </objects>
+      <object>objects\obj_base</object>
     </objects>
     <objects name="VIEWS">
       <object>objects\obj_changeable_parent</object>
@@ -169,14 +177,16 @@
   <rooms name="rooms">
     <room>rooms\rm_field</room>
   </rooms>
-  <constants number="48">
+  <constants number="58">
     <constant name="ATBAT_ACTION_CARD_DROPPED">"ATBAT_ACTION_CARD_DROPPED"</constant>
     <constant name="ATBAT_ACTION_SELECT_CARD">"ATBAT_ACTION_SELECT_CARD"</constant>
     <constant name="ATBAT_ACTION_TAKE_STRIKE">"ATBAT_ACTION_TAKE_STRIKE"</constant>
+    <constant name="ATBAT_ACTION_BATTER_SAFE">"ATBAT_ACTION_BATTER_SAFE"</constant>
     <constant name="ATBAT_ACTION_CONTACT">"ATBAT_ACTION_CONTACT"</constant>
     <constant name="ATBAT_ACTION_FIELD">"ATBAT_ACTION_FIELD"</constant>
     <constant name="ATBAT_ACTION_PITCH">"ATBAT_ACTION_PITCH"</constant>
     <constant name="ATBAT_ACTION_STEAL">"ATBAT_ACTION_STEAL"</constant>
+    <constant name="ATBAT_ACTION_ADVANCE_BASE">"ATBAT_ACTION_ADVANCE_BASE"</constant>
     <constant name="ATBAT_ACTION_SWING">"ATBAT_ACTION_SWING"</constant>
     <constant name="ATBAT_STATE_FIELDING">"ATBAT_STATE_FIELDING"</constant>
     <constant name="ATBAT_STATE_HITTING_OR_STEALING">"ATBAT_STATE_HITTING_OR_STEALING"</constant>
@@ -218,6 +228,14 @@
     <constant name="PITCHER_DECK_SIZE">3</constant>
     <constant name="PITCHER">"PITCHER"</constant>
     <constant name="STATE_NONE">"STATE_NONE"</constant>
+    <constant name="PITCH_DROP_TARGET">"PITCH_DROP_TARGET"</constant>
+    <constant name="SWING_DROP_TARGET">"SWING_DROP_TARGET"</constant>
+    <constant name="TAKE_PITCH_DROP_TARGET">"TAKE_PITCH_DROP_TARGET"</constant>
+    <constant name="FIELD_DROP_TARGET">"FIELD_DROP_TARGET"</constant>
+    <constant name="FIRST_BASE">"FIRST_BASE"</constant>
+    <constant name="SECOND_BASE">"SECOND_BASE"</constant>
+    <constant name="THIRD_BASE">"THIRD_BASE"</constant>
+    <constant name="HOME_BASE">"HOME_BASE"</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
